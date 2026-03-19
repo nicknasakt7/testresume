@@ -1,0 +1,1251 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jutamat Jarusirisakul - Junior Fullstack Developer</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', sans-serif;
+        line-height: 1.6;
+        color: #1f2937;
+        background: #ffffff;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: 500;
+        line-height: 1.5;
+      }
+
+      h1 {
+        font-size: 3.75rem;
+      }
+
+      h2 {
+        font-size: 2.25rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+      }
+
+      section {
+        padding: 6rem 2rem;
+      }
+
+      .container {
+        max-width: 80rem;
+        margin: 0 auto;
+      }
+
+      .container-md {
+        max-width: 64rem;
+        margin: 0 auto;
+      }
+
+      .container-sm {
+        max-width: 56rem;
+        margin: 0 auto;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in-up {
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      .delay-1 {
+        animation-delay: 0.1s;
+      }
+      .delay-2 {
+        animation-delay: 0.2s;
+      }
+      .delay-3 {
+        animation-delay: 0.3s;
+      }
+      .delay-4 {
+        animation-delay: 0.4s;
+      }
+
+      /* Card */
+      .card {
+        background: #ffffff;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border: 1px solid #f3f4f6;
+        transition: all 0.2s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 30px rgba(30, 58, 138, 0.15);
+      }
+
+      /* Hero Section */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(
+          135deg,
+          rgba(30, 58, 138, 0.05) 0%,
+          #ffffff 100%
+        );
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .hero-title {
+        color: #1e3a8a;
+        margin-bottom: 1rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.875rem;
+        color: #374151;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-description {
+        font-size: 1.25rem;
+        color: #6b7280;
+        margin-bottom: 1rem;
+      }
+
+      .hero-text {
+        font-size: 1.125rem;
+        color: #9ca3af;
+        margin-bottom: 3rem;
+        max-width: 36rem;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .btn {
+        padding: 0.75rem 2rem;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        border: none;
+      }
+
+      .btn-primary {
+        background: #1e3a8a;
+        color: #ffffff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-primary:hover {
+        background: rgba(30, 58, 138, 0.9);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .btn-outline {
+        background: #ffffff;
+        color: #1e3a8a;
+        border: 2px solid #1e3a8a;
+      }
+
+      .btn-outline:hover {
+        background: #f3f4f6;
+      }
+
+      .profile-image-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+
+      .profile-blur {
+        position: absolute;
+        inset: 0;
+        background: rgba(30, 58, 138, 0.1);
+        border-radius: 1rem;
+        filter: blur(40px);
+      }
+
+      .profile-image {
+        position: relative;
+        border-radius: 1rem;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        max-width: 28rem;
+        width: 100%;
+      }
+
+      /* Section Backgrounds */
+      .bg-gray {
+        background: #f3f4f6;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .section-title {
+        color: #1e3a8a;
+        margin-bottom: 3rem;
+      }
+
+      /* Grid Layouts */
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+
+      .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+      }
+
+      /* Tech Stack */
+      .tech-category {
+        margin-bottom: 2rem;
+      }
+
+      .category-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .category-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: #1e3a8a;
+      }
+
+      .category-title {
+        color: #1e3a8a;
+      }
+
+      .tech-card {
+        text-align: center;
+        color: #374151;
+      }
+
+      /* Projects */
+      .project-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .project-icon {
+        width: 2rem;
+        height: 2rem;
+        color: #1e3a8a;
+        flex-shrink: 0;
+        margin-top: 0.25rem;
+      }
+
+      .project-type {
+        font-size: 0.875rem;
+        color: #6b7280;
+        margin-bottom: 1rem;
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .tag {
+        padding: 0.25rem 0.75rem;
+        background: rgba(30, 58, 138, 0.1);
+        color: #1e3a8a;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+      }
+
+      .highlight-list {
+        list-style: none;
+        margin-bottom: 1rem;
+      }
+
+      .highlight-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        color: #6b7280;
+      }
+
+      .bullet {
+        color: #1e3a8a;
+        margin-top: 0.25rem;
+      }
+
+      .project-footer {
+        padding-top: 1rem;
+        border-top: 1px solid #e5e7eb;
+        font-size: 0.875rem;
+        color: #6b7280;
+      }
+
+      .role-label {
+        color: #1e3a8a;
+      }
+
+      /* Education */
+      .education-content {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .education-icon-wrapper {
+        background: rgba(30, 58, 138, 0.1);
+        padding: 1rem;
+        border-radius: 0.5rem;
+      }
+
+      .education-icon {
+        width: 2rem;
+        height: 2rem;
+        color: #1e3a8a;
+      }
+
+      .education-details {
+        flex: 1;
+      }
+
+      .education-title {
+        color: #1e3a8a;
+        margin-bottom: 0.5rem;
+      }
+
+      .education-school {
+        font-size: 1.125rem;
+        color: #374151;
+        margin-bottom: 0.5rem;
+      }
+
+      .education-duration {
+        color: #6b7280;
+        margin-bottom: 1rem;
+      }
+
+      .topics-label {
+        font-size: 0.875rem;
+        color: #374151;
+        margin-bottom: 0.5rem;
+      }
+
+      .topic-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .topic-tag {
+        padding: 0.25rem 0.75rem;
+        background: #f3f4f6;
+        color: #374151;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        border: 1px solid #e5e7eb;
+      }
+
+      /* Skills */
+      .skill-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .skill-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+        color: #1e3a8a;
+      }
+
+      /* Contact */
+      .contact-card {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .contact-content {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .contact-icon-wrapper {
+        background: rgba(30, 58, 138, 0.1);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        transition: background 0.3s ease;
+      }
+
+      .contact-card:hover .contact-icon-wrapper {
+        background: rgba(30, 58, 138, 0.2);
+      }
+
+      .contact-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: #1e3a8a;
+      }
+
+      .contact-label {
+        font-size: 0.875rem;
+        color: #6b7280;
+        margin-bottom: 0.25rem;
+      }
+
+      .contact-value {
+        color: #374151;
+        transition: color 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .contact-card:hover .contact-value {
+        color: #1e3a8a;
+      }
+
+      .external-icon {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      /* Footer */
+      footer {
+        padding: 3rem 2rem;
+        background: #1e3a8a;
+        color: #ffffff;
+        text-align: center;
+      }
+
+      footer p {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-subtitle {
+        font-size: 0.875rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        h2 {
+          font-size: 1.875rem;
+        }
+
+        section {
+          padding: 4rem 1.5rem;
+        }
+
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .grid-2,
+        .grid-3,
+        .grid-4 {
+          grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 640px) {
+          .grid-4 {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+      }
+
+      @media (min-width: 768px) {
+        .grid-4 {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .grid-3 {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .grid-4 {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="fade-in-up">
+            <h1 class="hero-title">Jutamat Jarusirisakul</h1>
+            <h2 class="hero-subtitle">Junior Fullstack Developer</h2>
+            <p class="hero-description">
+              Fullstack Developer specializing in React, Next.js, and NestJS
+            </p>
+            <p class="hero-text">
+              Passionate about building scalable web applications with clean and
+              maintainable code
+            </p>
+            <div class="button-group">
+              <a href="#projects" class="btn btn-primary">View Projects</a>
+              <a href="#contact" class="btn btn-outline">Contact</a>
+            </div>
+          </div>
+
+          <div class="profile-image-wrapper fade-in-up delay-2">
+            <div class="profile-blur"></div>
+            <img
+              src="./src/assets/profile.png"
+              alt="Jutamat Jarusirisakul"
+              class="profile-image"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-gray">
+      <div class="container-sm">
+        <h2 class="section-title text-center">About Me</h2>
+
+        <div class="card" style="margin-bottom: 1.5rem">
+          <h3 class="education-title">Professional Summary</h3>
+          <p style="color: #374151">
+            Junior Fullstack Developer with hands-on experience building web
+            applications using React, Next.js, and NestJS. Strong foundation in
+            RESTful APIs, authentication, database design, and modern frontend
+            architecture. Passionate about writing clean, maintainable code and
+            continuously improving development skills.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="education-title">Career Transition</h3>
+          <p style="color: #374151">
+            Transitioned from business background to software development to
+            pursue long-term growth in the tech industry and build scalable
+            digital products.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech">
+      <div class="container">
+        <h2 class="section-title text-center">Tech Stack</h2>
+
+        <!-- Programming Languages -->
+        <div class="tech-category">
+          <div class="category-header">
+            <svg
+              class="category-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+              ></path>
+            </svg>
+            <h3 class="category-title">Programming Languages</h3>
+          </div>
+          <div class="grid-4">
+            <div class="card tech-card">TypeScript</div>
+            <div class="card tech-card">JavaScript</div>
+            <div class="card tech-card">SQL</div>
+          </div>
+        </div>
+
+        <!-- Frontend -->
+        <div class="tech-category">
+          <div class="category-header">
+            <svg
+              class="category-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"
+              ></path>
+            </svg>
+            <h3 class="category-title">Frontend</h3>
+          </div>
+          <div class="grid-4">
+            <div class="card tech-card">React</div>
+            <div class="card tech-card">Next.js</div>
+            <div class="card tech-card">HTML</div>
+            <div class="card tech-card">CSS</div>
+            <div class="card tech-card">Tailwind CSS</div>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="tech-category">
+          <div class="category-header">
+            <svg
+              class="category-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+              ></path>
+            </svg>
+            <h3 class="category-title">Backend</h3>
+          </div>
+          <div class="grid-4">
+            <div class="card tech-card">Node.js</div>
+            <div class="card tech-card">Express.js</div>
+            <div class="card tech-card">NestJS</div>
+            <div class="card tech-card">RESTful API</div>
+            <div class="card tech-card">JWT</div>
+            <div class="card tech-card">bcrypt</div>
+          </div>
+        </div>
+
+        <!-- Database -->
+        <div class="tech-category">
+          <div class="category-header">
+            <svg
+              class="category-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
+              ></path>
+            </svg>
+            <h3 class="category-title">Database</h3>
+          </div>
+          <div class="grid-4">
+            <div class="card tech-card">PostgreSQL</div>
+            <div class="card tech-card">MongoDB</div>
+            <div class="card tech-card">Prisma</div>
+            <div class="card tech-card">Mongoose</div>
+          </div>
+        </div>
+
+        <!-- Tools & Others -->
+        <div class="tech-category">
+          <div class="category-header">
+            <svg
+              class="category-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              ></path>
+            </svg>
+            <h3 class="category-title">Tools & Others</h3>
+          </div>
+          <div class="grid-4">
+            <div class="card tech-card">Git</div>
+            <div class="card tech-card">GitHub</div>
+            <div class="card tech-card">Postman</div>
+            <div class="card tech-card">Docker</div>
+            <div class="card tech-card">VS Code</div>
+            <div class="card tech-card">Figma</div>
+            <div class="card tech-card">Zod</div>
+            <div class="card tech-card">DTO validation</div>
+            <div class="card tech-card">MVC</div>
+            <div class="card tech-card">Agile</div>
+            <div class="card tech-card">CI/CD basics</div>
+            <div class="card tech-card">n8n</div>
+            <div class="card tech-card">AI tools</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="bg-gray">
+      <div class="container-md">
+        <h2 class="section-title text-center">Projects</h2>
+
+        <div class="grid-2">
+          <!-- Project 1 -->
+          <div class="card" style="height: 100%">
+            <div class="project-header">
+              <svg
+                class="project-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                ></path>
+              </svg>
+              <div>
+                <h3 class="education-title">
+                  Employee Management Internal System
+                </h3>
+                <p class="project-type">Fullstack Web Application</p>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 1rem">
+              <p style="font-size: 0.875rem; margin-bottom: 0.5rem">
+                <span style="color: #374151">Tech Stack:</span>
+              </p>
+              <div class="tech-tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">NestJS</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Prisma</span>
+                <span class="tag">JWT</span>
+                <span class="tag">Zod</span>
+              </div>
+            </div>
+
+            <p style="color: #374151; margin-bottom: 1rem">
+              Designed and developed a fullstack internal system with
+              authentication and database architecture
+            </p>
+
+            <div style="margin-bottom: 1rem">
+              <p
+                style="
+                  font-size: 0.875rem;
+                  color: #374151;
+                  margin-bottom: 0.5rem;
+                "
+              >
+                Key Highlights:
+              </p>
+              <ul class="highlight-list">
+                <li><span class="bullet">•</span> Full CRUD functionality</li>
+                <li>
+                  <span class="bullet">•</span> Authentication system
+                  (Login/Register)
+                </li>
+                <li>
+                  <span class="bullet">•</span> API integration between frontend
+                  and backend
+                </li>
+              </ul>
+            </div>
+
+            <div class="project-footer">
+              <span class="role-label">Role:</span> Fullstack Developer
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="card" style="height: 100%">
+            <div class="project-header">
+              <svg
+                class="project-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                ></path>
+              </svg>
+              <div>
+                <h3 class="education-title">Group Project</h3>
+                <p class="project-type">Collaborative Development</p>
+              </div>
+            </div>
+
+            <p style="color: #374151; margin-bottom: 1rem">
+              Collaborated in a team using Git workflow and modular architecture
+            </p>
+
+            <div style="margin-bottom: 1rem">
+              <p
+                style="
+                  font-size: 0.875rem;
+                  color: #374151;
+                  margin-bottom: 0.5rem;
+                "
+              >
+                Key Highlights:
+              </p>
+              <ul class="highlight-list">
+                <li>
+                  <span class="bullet">•</span> Team collaboration with Agile
+                  methodology
+                </li>
+                <li>
+                  <span class="bullet">•</span> Git branching & pull requests
+                  workflow
+                </li>
+                <li>
+                  <span class="bullet">•</span> Conflict resolution and code
+                  reviews
+                </li>
+                <li>
+                  <span class="bullet">•</span> Module separation and clean
+                  architecture
+                </li>
+              </ul>
+            </div>
+
+            <div class="project-footer">
+              <span class="role-label">Focus:</span> Teamwork & Version Control
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+      <div class="container-md">
+        <h2 class="section-title text-center">Education</h2>
+
+        <div class="card">
+          <div class="education-content">
+            <div class="education-icon-wrapper">
+              <svg
+                class="education-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                <path
+                  d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                ></path>
+              </svg>
+            </div>
+            <div class="education-details">
+              <h3 class="education-title">Fullstack Web Development</h3>
+              <p class="education-school">DevNest</p>
+              <p class="education-duration">December 2025 – April 2026</p>
+
+              <div>
+                <p class="topics-label">Topics Covered:</p>
+                <div class="topic-tags">
+                  <span class="topic-tag">HTML</span>
+                  <span class="topic-tag">CSS</span>
+                  <span class="topic-tag">TypeScript</span>
+                  <span class="topic-tag">Database</span>
+                  <span class="topic-tag">React</span>
+                  <span class="topic-tag">Next.js</span>
+                  <span class="topic-tag">NestJS</span>
+                  <span class="topic-tag">Docker</span>
+                  <span class="topic-tag">Agile</span>
+                  <span class="topic-tag">n8n</span>
+                  <span class="topic-tag">AI</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Soft Skills Section -->
+    <section id="skills" class="bg-gray">
+      <div class="container-sm">
+        <h2 class="section-title text-center">Soft Skills</h2>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="skill-item">
+              <svg
+                class="skill-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                ></path>
+              </svg>
+              <p>Strong problem-solving</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="skill-item">
+              <svg
+                class="skill-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                ></path>
+              </svg>
+              <p>Logical thinking</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="skill-item">
+              <svg
+                class="skill-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                ></path>
+              </svg>
+              <p>Fast learner</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="skill-item">
+              <svg
+                class="skill-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                ></path>
+              </svg>
+              <p>Debugging mindset</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="skill-item">
+              <svg
+                class="skill-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                ></path>
+              </svg>
+              <p>Agile team experience</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="skill-item">
+              <svg
+                class="skill-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                ></path>
+              </svg>
+              <p>Effective communication</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container-md">
+        <h2 class="section-title text-center">Get In Touch</h2>
+
+        <div class="grid-2">
+          <!-- Email -->
+          <div class="card">
+            <a href="mailto:j.nicksakul@gmail.com" class="contact-card">
+              <div class="contact-content">
+                <div class="contact-icon-wrapper">
+                  <svg
+                    class="contact-icon"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="contact-label">Email</p>
+                  <p class="contact-value">j.nicksakul@gmail.com</p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Phone -->
+          <div class="card">
+            <a href="tel:0638798982" class="contact-card">
+              <div class="contact-content">
+                <div class="contact-icon-wrapper">
+                  <svg
+                    class="contact-icon"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="contact-label">Phone</p>
+                  <p class="contact-value">063-879-8982</p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- GitHub -->
+          <div class="card">
+            <a
+              href="https://github.com/nicknasakt7"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-card"
+            >
+              <div class="contact-content">
+                <div class="contact-icon-wrapper">
+                  <svg
+                    class="contact-icon"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                <div style="flex: 1">
+                  <p class="contact-label">GitHub</p>
+                  <p class="contact-value">
+                    View Profile
+                    <svg
+                      class="external-icon"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      ></path>
+                    </svg>
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- LinkedIn -->
+          <div class="card">
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-card"
+            >
+              <div class="contact-content">
+                <div class="contact-icon-wrapper">
+                  <svg
+                    class="contact-icon"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                    ></path>
+                  </svg>
+                </div>
+                <div style="flex: 1">
+                  <p class="contact-label">LinkedIn</p>
+                  <p class="contact-value">
+                    Connect
+                    <svg
+                      class="external-icon"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      ></path>
+                    </svg>
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>© 2026 Jutamat Jarusirisakul</p>
+        <p class="footer-subtitle">Built with HTML, CSS, and JavaScript</p>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }
+        });
+      });
+
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px',
+      };
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observe cards for animation
+      document.querySelectorAll('.card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition =
+          'opacity 0.6s ease-out, transform 0.6s ease-out';
+        observer.observe(card);
+      });
+    </script>
+  </body>
+</html>
